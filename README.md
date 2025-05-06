@@ -1,2 +1,7 @@
 # I-Taram
-A feedback website for Naga City Gov
+
+I-Taram is a feedback website developed for the Naga City Government to gather public opinions and improve local services. It allows residents to access the platform by scanning a QR code displayed in government offices. Users are asked to provide consent, rate their experience with a star rating system, and answer yes/no questions. The site includes an admin panel where authorized personnel can view feedback and update survey questions. I-Taram promotes transparency and encourages citizen participation in government decision-making.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ang I-Taram ay isang website ng feedback na binuo para sa Pamahalaang Lungsod ng Naga upang mangalap ng mga opinyon ng mga mamamayan at mapabuti ang mga lokal na serbisyo. Maaaring mag-access ang mga residente sa platform sa pamamagitan ng pag-scan ng QR code na ipinapakita sa mga tanggapan ng gobyerno. Hinihiling sa mga gumagamit na magbigay ng pahintulot, mag-rate ng kanilang karanasan gamit ang star rating system, at sumagot sa mga yes/no na tanong. Kasama sa website ang isang admin panel kung saan maaaring makita ng mga awtorisadong tao ang mga feedback at i-update ang mga tanong sa survey. Pinapalakas ng I-Taram ang transparency at hinihikayat ang pakikilahok ng mga mamamayan sa paggawa ng desisyon ng gobyerno.
