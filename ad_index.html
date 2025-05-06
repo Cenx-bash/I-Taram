@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - i-TARAM</title>
+  <link rel="stylesheet" href="CSS/ad_index.css">
+</head>
+<body>
+  <header>
+    <h1>i-TARAM Admin Panel</h1>
+    <p>Edit Feedback Questions</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Edit Questions</h2>
+      <form id="admin-form">
+        <fieldset>
+          <legend>Star Rating Prompt</legend>
+          <label for="star-question">Question:</label>
+          <input type="text" id="star-question" name="star-question" value="How would you rate our service?">
+        </fieldset>
+
+        <fieldset>
+          <legend>Yes/No Questions</legend>
+
+          <div id="yesno-questions">
+            <div class="question">
+              <input type="text" name="yesno[]" placeholder="Was the staff helpful?" required>
+              <button type="button" class="delete-question">Delete</button>
+            </div>
+            <div class="question">
+              <input type="text" name="yesno[]" placeholder="Was the process fast?" required>
+              <button type="button" class="delete-question">Delete</button>
+            </div>
+            <div class="question">
+              <input type="text" name="yesno[]" placeholder="Would you recommend us?" required>
+              <button type="button" class="delete-question">Delete</button>
+            </div>
+          </div>
+
+          <button type="button" id="add-question" class="primary" style="margin-top: 10px;">+ Add Question</button>
+        </fieldset>
+
+        <button type="submit" class="primary">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 i-TARAM. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Add new question input with delete button
+    document.getElementById('add-question').addEventListener('click', function () {
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question');
+      
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'yesno[]';
+      input.placeholder = 'Enter a new yes/no question';
+      input.required = true;
+
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.classList.add('delete-question');
+      deleteButton.textContent = 'Delete';
+
+      // Delete question on button click
+      deleteButton.addEventListener('click', function () {
+        questionDiv.remove();
+      });
+
+      questionDiv.appendChild(input);
+      questionDiv.appendChild(deleteButton);
+      document.getElementById('yesno-questions').appendChild(questionDiv);
+    });
+
+    // Delete question functionality for existing questions
+    document.querySelectorAll('.delete-question').forEach(button => {
+      button.addEventListener('click', function () {
+        button.parentElement.remove();
+      });
+    });
+
+    // Save to localStorage safely
+    document.getElementById('admin-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const starQInput = document.getElementById('star-question');
+      const yesnoInputs = document.querySelectorAll('input[name="yesno[]"]');
+
+      if (!starQInput) {
+        alert("Star rating input not found.");
+        return;
+      }
+
+      const starQuestion = starQInput.value.trim();
+      const yesnoQuestions = Array.from(yesnoInputs).map(input => input.value.trim()).filter(Boolean);
+
+      // Simple validation
+      if (!starQuestion || yesnoQuestions.length === 0) {
+        alert("Please fill out all questions.");
+        return;
+      }
+
+      // Save to localStorage
+      localStorage.setItem('starQuestion', starQuestion);
+      localStorage.setItem('yesnoQuestions', JSON.stringify(yesnoQuestions));
+
+      alert("Questions successfully saved!");
+    });
+  </script>
+</body>
+</html>
